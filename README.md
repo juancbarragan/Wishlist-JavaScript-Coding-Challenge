@@ -63,7 +63,7 @@ IMPORTANT: this is not a UI design test it's a technical test. You don't need to
 
 - Include a game search;
 - Include a selector were the user can filter the data by Released, Created, Rating or any other relevant filter;
-- Add unit tests;
+- Include unit tests;
 - Any details you include to improve the app will be a bonus.
 
 ### Submission
