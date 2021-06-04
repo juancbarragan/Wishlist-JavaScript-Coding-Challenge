@@ -14,7 +14,7 @@ The coding challenge requires the following to be installed on your development 
  - Open a terminal and `cd` into the root directory of the `Wishlist-JavaScript-Coding-Challenge` repository.
  - Execute `npm install` in the terminal.
 
-This installation will only give you the typescript library, it is your responsabilty to create the structure of folders and files that you will need for the challenge.
+This installation will only give you the Typescript library, it is your responsabilty to create the structure of folders and files that you will need for the challenge. Feel free to include more `scripts` into the `package.json` file, for example to run Typescript in watch mode. E.g : `"watch-ts": "tsc -w"`.
 
 ### The Challenge
 Most of us like computer games, but there are so many that sometimes we forget which ones we like the most. Wouldn't it be wonderful if we could have our own personal wishlist with all the games we love. We are pretty sure there is nothing like that on market (cof...cof...) so let's build one!!
