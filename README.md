@@ -45,7 +45,7 @@ When the heart icon at the top right is clicked, a flyout will be displayed show
 1. The HTTP GET function return value must be a promise that resolves to the overall results array;
 2. If the HTTP status code of the response is not 200, deal with the error showing some alert on the page;
 3. The cards on the homepage must be in sync with the wishlist, that means if a card is already in the wishlist  it can not be added again;
-4. The challenge needs to be developed only using HTML, CSS or SASS, modern Javascript (E6) and Typescript. No librarys like jQuery, Lodash or simliar are permited.
+4. The challenge needs to be developed only using HTML, CSS or SASS, modern Javascript (E6) and Typescript. No librarys like jQuery, React, Lodash or simliar are permited.
 
 **IMPORTANT:** this is not a UI design test it's a technical test. You don't need to follow in detail the mockups shown above. Instead of card's you can render a simple list of games with the same data, the icons can be subtitued by simple buttons. The flyout does not need to be floated... you get the idea. But if we can render a decent interface,  it will be a bonus :)
 
