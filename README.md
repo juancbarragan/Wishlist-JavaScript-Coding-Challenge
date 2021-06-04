@@ -54,7 +54,7 @@ When the heart icon at the top right is clicked, a flyout will be displayed show
 - We are most impressed with readable code that works;
 - Keep your solution as simple as possible;
 - Separation of concerns is important;
-- It's also a Typescript challenge too so the using of `types` and `interfaces` are important;
+- It's also a Typescript challenge too so adding static type definitions and `interfaces` are important;
 - Code as if your HTTP functions may one day be used in a real http implementation;
 - Similiar solutions to this challenge may be available on the internet and may be used to give you ideas, however, we do not agree with some of the implementations we saw;
 -   Direct plagiarism results in an immediate failure.
