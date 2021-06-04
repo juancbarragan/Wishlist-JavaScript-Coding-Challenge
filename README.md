@@ -24,6 +24,8 @@ Our UI designers have already created some mockups and defined the UX that need 
 
 https://rawg.io/api/collections/must-play/games
 
+This endpoint will give you a list of the most playlable games in `JSON` format.
+
 **Let's start with the homepage:**
 
 The homepage is divided in two sections; the navbar, that only has the company name and a button (the heart icon) that will toggle the wishlist flyout on the right hand side. When the user loads this page for the first time, a fetch request is sent to the RAWG API server and a list of twenty results is returned. Each one of the result needs to be rendered like a card with the data sugested in the mockups.
