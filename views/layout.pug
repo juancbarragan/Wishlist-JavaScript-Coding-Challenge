@@ -1,9 +1,12 @@
 doctype html
+
+- const random = Math.floor(Math.random() * 1000)
+
 html(lang='')
     head
         meta(charset='utf-8')
-        title #{title} - Wishlist JavaScript Coding Challenge
-        link(rel='stylesheet', href='/css/main.css')
+        title Wishlist JavaScript Coding Challenge
+        link(rel='stylesheet', href=`/css/main.css?ver=${random}`)
 
     body
 block content

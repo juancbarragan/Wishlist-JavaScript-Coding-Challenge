@@ -1,0 +1,10 @@
+$base-color: #0370CB;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: $base-color;
+  margin: 0 auto;
+  width: 30%;
+  height: 500px;
+}

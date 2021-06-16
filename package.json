@@ -10,7 +10,11 @@
     "copy-static-assets": "ts-node copyStaticAssets.ts",
     "serve": "node dist/server.js",
     "start": "npm run serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w",
+    "watch-sass": "sass --watch src/public/css/main.scss dist/public/css/main.css",
+    "watch": "concurrently -k \"npm run watch-sass\" \"npm run watch-ts\" \"npm run watch-node\""
   },
   "author": "Capsifi",
   "license": "MIT",
@@ -18,15 +22,17 @@
     "@types/errorhandler": "^1.5.0",
     "@types/express": "^4.17.12",
     "@types/shelljs": "^0.8.8",
+    "concurrently": "6.0.2",
     "sass": "^1.35.0",
     "shelljs": "^0.8.4",
     "ts-node": "9.1.1",
     "typescript": "^4.3.2"
   },
   "dependencies": {
+    "errorhandler": "1.5.1",
     "express": "^4.17.1",
+    "nodemon": "2.0.7",
     "prettier": "^2.3.1",
-    "pug": "3.0.2",
-    "errorhandler": "1.5.1"
+    "pug": "3.0.2"
   }
 }
