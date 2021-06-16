@@ -1,10 +1,22 @@
-$base-color: #0370CB;
+$fa-font-path: '../fonts/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+$base-color: #0370cb;
+$base-color2: #0370ca;
 
 .container {
   display: flex;
   flex-direction: column;
-  background-color: $base-color;
   margin: 0 auto;
   width: 30%;
-  height: 500px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+
+.header {
+  width: 100%;
+  background-color: $base-color;
+  color: white;
+  padding: 10px;
 }

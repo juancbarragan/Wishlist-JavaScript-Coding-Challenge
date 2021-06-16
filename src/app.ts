@@ -1,7 +1,21 @@
 import express from 'express';
 import path from 'path';
-
 import * as homeController from './controllers/home';
+import sass from 'node-sass';
+import packageImporter from 'node-sass-package-importer';
+
+const options = {
+  cwd: process.cwd(),
+  packageKeys: ['scss', 'main.scss'],
+  packagePrefix: '~'
+};
+
+sass.render(
+  {
+    importer: packageImporter(options)
+  },
+  () => {}
+);
 
 const app = express();
 
