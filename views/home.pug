@@ -3,8 +3,16 @@ extends layout
 block content
     h1 Wishlist JavaScript Coding Challenge
     div(class='container')
-        div(class='header')
-            span Company name
-            i(class='fas fa-heart fa-lg' style={color: 'red'})
+        div(class='header row')
+            div Company name
+            div
+                i(class='fas fa-heart fa-lg' style={color: 'red'})
+        div
+            - var pets = ['Game1']
+            each title in pets
+                include components/card
+
+
+
 
 
