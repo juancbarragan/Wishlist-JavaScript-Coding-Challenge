@@ -3,6 +3,7 @@ import path from 'path';
 import * as homeController from './controllers/home';
 import sass from 'node-sass';
 import packageImporter from 'node-sass-package-importer';
+import { getTodos } from './controllers/home';
 
 const options = {
   cwd: process.cwd(),
