@@ -10,7 +10,7 @@ $card-container-background-color: #e5f1fa;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 30%;
+  width: 35%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
   border: solid $base-color 3px;
@@ -32,18 +32,17 @@ $card-container-background-color: #e5f1fa;
 .card {
   background-color: $base-color-light;
   width: 200px;
-  height: 200px;
+  height: 300px;
   border-radius: 10px;
   padding: 7px;
   display: flex;
   margin: 15px;
+  flex-direction: column;
 }
 
 .card-container {
   background-color: $card-container-background-color;
   border-radius: 5px;
-  width: 50px;
-  height: 50px;
-  flex: 1;
-  margin: 0 2px;
+  margin: 5px;
+  padding: 5px;
 }
