@@ -13,6 +13,7 @@ export const index = (req: Request, res: Response) => {
     res.header('Expires', '-1');
     res.header('Pragma', 'no-cache');
 
+    console.log(json);
     let result = fs.readFileSync(
       path.resolve(__dirname, '../public/inc.html'),
       'utf8'
@@ -26,7 +27,11 @@ export const index = (req: Request, res: Response) => {
           path.resolve(__dirname, '../public/card.html'),
           'utf8'
         );
-        cards += data;
+
+        cards += data
+          .replace('{{image}}', r.background_image)
+          .replace('{{name}}', r.name)
+          .replace('{{released}}', r.released);
       });
     } catch (err) {
       console.error(err);

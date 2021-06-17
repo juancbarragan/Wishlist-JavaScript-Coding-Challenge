@@ -10,7 +10,7 @@ $card-container-background-color: #e5f1fa;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 35%;
+  width: 530px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
   border: solid $base-color 3px;
@@ -31,8 +31,8 @@ $card-container-background-color: #e5f1fa;
 
 .card {
   background-color: $base-color-light;
-  width: 200px;
-  height: 300px;
+  width: 220px;
+  height: 250px;
   border-radius: 10px;
   padding: 7px;
   display: flex;
