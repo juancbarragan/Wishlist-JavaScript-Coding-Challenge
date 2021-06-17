@@ -46,3 +46,15 @@ $card-container-background-color: #e5f1fa;
   margin: 5px;
   padding: 5px;
 }
+
+.fas {
+  cursor: pointer;
+
+  &.selected {
+    color: indianred;
+  }
+
+  &:not(.selected) {
+    color: AliceBlue;
+  }
+}

@@ -31,7 +31,8 @@ export const index = (req: Request, res: Response) => {
         cards += data
           .replace('{{image}}', r.background_image)
           .replace('{{name}}', r.name)
-          .replace('{{released}}', r.released);
+          .replace('{{released}}', r.released)
+          .replace('{{game-id}}', r.id);
       });
     } catch (err) {
       console.error(err);
