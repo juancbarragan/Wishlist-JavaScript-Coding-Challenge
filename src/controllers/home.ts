@@ -8,24 +8,35 @@ import path from 'path';
  * @route GET /
  */
 export const index = (req: Request, res: Response) => {
-  getContent().then(x => {
+  getContent().then(json => {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     res.header('Expires', '-1');
     res.header('Pragma', 'no-cache');
 
-    console.log(x);
+    let result = fs.readFileSync(
+      path.resolve(__dirname, '../public/inc.html'),
+      'utf8'
+    );
+
+    let cards = '';
+
     try {
-      const data = fs.readFileSync(
-        path.resolve(__dirname, '../public/inc.html'),
-        'utf8'
-      );
-      console.log(data);
+      json.forEach((r: any) => {
+        const data = fs.readFileSync(
+          path.resolve(__dirname, '../public/card.html'),
+          'utf8'
+        );
+        cards += data;
+      });
     } catch (err) {
       console.error(err);
     }
 
-    res.set('Content-Type', 'application/json');
-    res.send(x);
+    result = result.replace('{{content}}', cards);
+
+    // res.set('Content-Type', 'application/json');
+    res.set('Content-Type', 'text/html');
+    res.send(result);
   });
 };
 
@@ -48,8 +59,9 @@ export const getContent = (): Promise<any> => {
       // we are done, resolve promise with those joined chunks
 
       response.on('end', () => {
-        const result = JSON.parse(`[${body.join('')}]`);
-        resolve(result);
+        const result = JSON.parse(body.join(''));
+
+        resolve(result.results);
       });
     });
     // handle connection errors of the request
