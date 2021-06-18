@@ -91,10 +91,10 @@ $red: #f0504a;
 }
 
 .wishlist-item-container {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  background-color: #eeeeee;
+  padding: 5px 5px 5px 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .wishlist-item-label {

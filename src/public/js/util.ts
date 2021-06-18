@@ -1,7 +1,5 @@
 const icons = document.querySelectorAll('.card-icon');
-const wishListItemContainer = document.querySelector(
-  '.wish-list-item-container'
-);
+const wishListItemContainer = document.querySelector('.items-container');
 const favourites = new Set();
 
 for (let i = 0; i < icons.length; i++) {
@@ -26,7 +24,7 @@ for (let i = 0; i < icons.length; i++) {
     console.log(favourites);
 
     favourites.forEach(item => {
-      listOfItems += '<div><h4>hola</h4></div>';
+      listOfItems += getItemHtml('hola');
     });
 
     container.innerHTML = listOfItems;
@@ -44,5 +42,15 @@ flyoutIcon.addEventListener('click', (e: MouseEvent) => {
 });
 
 const getItemHtml = (label: string) => {
-  return;
+  return `<div class="wishlist-item-container">
+            <div class="wishlist-item">
+             <div class="wishlist-item-label" style="padding: 5px">gola</div>
+             <div class="wishlist-item-icon-container">
+              <i
+                class="fas fa-trash-alt fa-lg flyout-icon"
+                style="color: black"
+              ></i>
+            </div>
+          </div>
+        </div>`;
 };
