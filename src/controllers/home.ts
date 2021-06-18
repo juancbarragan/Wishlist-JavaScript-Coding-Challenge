@@ -4,18 +4,34 @@ import fs from 'fs';
 import path from 'path';
 import { Game } from '../models/game';
 
+/**
+ * Call process request to cause a failure
+ * @param req Request
+ * @param res Response
+ */
 export const error = (req: Request, res: Response) => {
   processRequest(
     req,
     res,
-    'https://rawg.io/api/collections/must-play/gamesxxxx'
+    'https://rawg.io/api/collections/must-play/games_bad_url'
   );
 };
 
+/**
+ * Call process request with no failure
+ * @param req Request
+ * @param res Response
+ */
 export const index = (req: Request, res: Response) => {
   processRequest(req, res, 'https://rawg.io/api/collections/must-play/games');
 };
 
+/**
+ * Process Request. Generates output HTML
+ * @param req Request
+ * @param res Response
+ * @param url Url backend
+ */
 const processRequest = (req: Request, res: Response, url: string) => {
   getContent(url)
     .then(json => {
@@ -85,7 +101,11 @@ const processRequest = (req: Request, res: Response, url: string) => {
     });
 };
 
-export const getContent = (url: string): Promise<any> => {
+/**
+ * Call game API and return a promise of Game (interface) objects
+ * @param url
+ */
+const getContent = (url: string): Promise<Array<Game>> => {
   return new Promise((resolve, reject) => {
     const request = https.get(url, response => {
       if (response.statusCode < 200 || response.statusCode > 299) {
