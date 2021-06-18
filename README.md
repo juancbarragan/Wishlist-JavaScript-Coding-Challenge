@@ -20,7 +20,7 @@ $ npm start
 <br/>
 <br/>
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Comments
 
 - The architecture of the application is based on the Microsoft Typescript Node
