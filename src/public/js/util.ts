@@ -7,6 +7,13 @@ const errorIcon = document.querySelector('.error-icon');
 const closeFlyoutIcon = document.getElementById('close-flyout-icon');
 const emptyItemsContainer = document.querySelector('.empty-items-container');
 
+const pathname = window.location.pathname;
+if (pathname === '/error') {
+  errorIcon.classList.add('active');
+} else {
+  errorIcon.classList.remove('active');
+}
+
 for (let i = 0; i < icons.length; i++) {
   icons[i].addEventListener('click', (e: MouseEvent) => {
     const element = <HTMLElement>e.target;
@@ -37,9 +44,9 @@ flyoutIcon.addEventListener('click', () => {
 
 errorIcon.addEventListener('click', () => {
   if (errorIcon.classList.contains('active')) {
-    errorIcon.classList.remove('active');
+    window.location.href = '/';
   } else {
-    errorIcon.classList.add('active');
+    window.location.href = '/error';
   }
 });
 

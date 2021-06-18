@@ -25,6 +25,7 @@ app.use(
   express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
 );
 
-app.get('/:fail?', homeController.index);
+app.get('/', homeController.index);
 
+app.get('/error', homeController.error);
 export default app;
