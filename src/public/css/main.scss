@@ -111,7 +111,7 @@ $green: #e7fd03;
 }
 
 .wishlist-item-label {
-  height: 18px;
+  min-height: 18px;
   background-color: #eeeeee;
 }
 
@@ -124,4 +124,30 @@ $green: #e7fd03;
 
 .fa-trash-alt {
   cursor: pointer;
+}
+
+.empty {
+  &.items-container {
+    visibility: hidden;
+  }
+
+  &.empty-items-container {
+    visibility: visible;
+  }
+}
+
+:not(.empty) {
+  &.items-container {
+    visibility: visible;
+  }
+
+  &.empty-items-container {
+    visibility: hidden;
+  }
+}
+
+.empty-items-container {
+  padding: 5px 5px 5px 15px;
+  display: flex;
+  flex-direction: row;
 }

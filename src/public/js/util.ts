@@ -1,6 +1,10 @@
 const icons = document.querySelectorAll('.card-icon');
 const wishListItemContainer = document.querySelector('.items-container');
 const favourites = new Map();
+const flyout = document.querySelector('.flyout');
+const flyoutIcon = document.querySelector('.flyout-icon');
+const closeFlyoutIcon = document.getElementById('close-flyout-icon');
+const emptyItemsContainer = document.querySelector('.empty-items-container');
 
 for (let i = 0; i < icons.length; i++) {
   icons[i].addEventListener('click', (e: MouseEvent) => {
@@ -16,14 +20,11 @@ for (let i = 0; i < icons.length; i++) {
     }
 
     redraw();
+    checkEmpty();
   });
 }
 
-const flyout = document.querySelector('.flyout');
-const flyoutIcon = document.querySelector('.flyout-icon');
-const closeFlyoutIcon = document.getElementById('close-flyout-icon');
-
-flyoutIcon.addEventListener('click', (e: MouseEvent) => {
+flyoutIcon.addEventListener('click', () => {
   if (flyout.classList.contains('opened')) {
     flyout.classList.remove('opened');
     flyoutIcon.classList.remove('opened');
@@ -33,7 +34,7 @@ flyoutIcon.addEventListener('click', (e: MouseEvent) => {
   }
 });
 
-closeFlyoutIcon.addEventListener('click', (e: MouseEvent) => {
+closeFlyoutIcon.addEventListener('click', () => {
   flyout.classList.remove('opened');
   flyoutIcon.classList.remove('opened');
 });
@@ -55,10 +56,11 @@ const getItemHtmlElement = (id: string, label: string): HTMLElement => {
   icon.setAttribute('style', 'color: black');
   icon.setAttribute('class', 'fas fa-trash-alt fa-lg delete-icon');
 
-  icon.addEventListener('click', (e: MouseEvent) => {
+  icon.addEventListener('click', () => {
     document.getElementById(id).classList.remove('selected');
     favourites.delete(id);
     redraw();
+    checkEmpty();
   });
 
   div
@@ -75,4 +77,14 @@ const redraw = () => {
   favourites.forEach(f => {
     container.appendChild(getItemHtmlElement(f.id, f.name));
   });
+};
+
+const checkEmpty = () => {
+  if (favourites.size === 0) {
+    wishListItemContainer.classList.add('empty');
+    emptyItemsContainer.classList.add('empty');
+  } else {
+    wishListItemContainer.classList.remove('empty');
+    emptyItemsContainer.classList.remove('empty');
+  }
 };
