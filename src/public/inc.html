@@ -24,9 +24,22 @@
       <div class="flyout" style="flex-direction: column">
         <div
           class="header"
-          style="height: 16px; width: 100%; padding: 5px 5px 10px 5px"
+          style="
+            height: 16px;
+            width: 100%;
+            padding: 5px 5px 10px 5px;
+            display: flex;
+            flex-direction: row;
+          "
         >
-          My wish list
+          <div>My wish list</div>
+          <div>
+            <i
+              id="close-flyout-icon"
+              style="margin-right: 10px"
+              class="fas fa-times fa-lg flyout-icon"
+            ></i>
+          </div>
         </div>
         <div class="items-container"></div>
       </div>

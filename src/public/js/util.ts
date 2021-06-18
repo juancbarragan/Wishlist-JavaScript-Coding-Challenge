@@ -15,17 +15,14 @@ for (let i = 0; i < icons.length; i++) {
       element.classList.add('selected');
     }
 
-    const container = <HTMLElement>wishListItemContainer;
-    container.innerHTML = '';
-
-    favourites.forEach(f => {
-      container.appendChild(getItemHtmlElement(f.id, f.name));
-    });
+    redraw();
   });
 }
 
 const flyout = document.querySelector('.flyout');
 const flyoutIcon = document.querySelector('.flyout-icon');
+const closeFlyoutIcon = document.getElementById('close-flyout-icon');
+
 flyoutIcon.addEventListener('click', (e: MouseEvent) => {
   if (flyout.classList.contains('opened')) {
     flyout.classList.remove('opened');
@@ -36,6 +33,11 @@ flyoutIcon.addEventListener('click', (e: MouseEvent) => {
   }
 });
 
+closeFlyoutIcon.addEventListener('click', (e: MouseEvent) => {
+  flyout.classList.remove('opened');
+  flyoutIcon.classList.remove('opened');
+});
+
 const getItemHtmlElement = (id: string, label: string): HTMLElement => {
   let div = document.createElement('div');
   div.setAttribute('class', 'wishlist-item-container');
@@ -43,14 +45,34 @@ const getItemHtmlElement = (id: string, label: string): HTMLElement => {
             <div class="wishlist-item">
              <div class="wishlist-item-label" style="padding: 5px">${label}</div>
              <div class="wishlist-item-icon-container">
-              <i
-                id="delete-${id}"
-                class="fas fa-trash-alt fa-lg flyout-icon"
-                style="color: black"
-              ></i>
+
             </div>
           </div>
         </div>`;
 
+  let icon = document.createElement('i');
+  icon.setAttribute('data-gameid', id);
+  icon.setAttribute('style', 'color: black');
+  icon.setAttribute('class', 'fas fa-trash-alt fa-lg delete-icon');
+
+  icon.addEventListener('click', (e: MouseEvent) => {
+    document.getElementById(id).classList.remove('selected');
+    favourites.delete(id);
+    redraw();
+  });
+
+  div
+    .getElementsByClassName('wishlist-item-icon-container')[0]
+    .appendChild(icon);
+
   return div;
+};
+
+const redraw = () => {
+  const container = <HTMLElement>wishListItemContainer;
+  container.innerHTML = '';
+
+  favourites.forEach(f => {
+    container.appendChild(getItemHtmlElement(f.id, f.name));
+  });
 };
