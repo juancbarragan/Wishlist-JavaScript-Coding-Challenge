@@ -18,6 +18,8 @@ $ npm run build
 $ npm start
 </code>
 
+<br>
+<br>
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Comments
