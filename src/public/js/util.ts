@@ -11,20 +11,16 @@ for (let i = 0; i < icons.length; i++) {
       element.classList.remove('selected');
       favourites.delete(id);
     } else {
-      favourites.set(id, { name: element.dataset.gamename });
+      favourites.set(id, { id, name: element.dataset.gamename });
       element.classList.add('selected');
     }
 
     const container = <HTMLElement>wishListItemContainer;
-
-    let listOfItems = '';
+    container.innerHTML = '';
 
     favourites.forEach(f => {
-      console.log(f);
-      listOfItems += getItemHtml(f.name);
+      container.appendChild(getItemHtmlElement(f.id, f.name));
     });
-
-    container.innerHTML = listOfItems;
   });
 }
 
@@ -38,16 +34,21 @@ flyoutIcon.addEventListener('click', (e: MouseEvent) => {
   }
 });
 
-const getItemHtml = (label: string) => {
-  return `<div class="wishlist-item-container">
+const getItemHtmlElement = (id: string, label: string): HTMLElement => {
+  let div = document.createElement('div');
+  div.setAttribute('class', 'wishlist-item-container');
+  div.innerHTML = `<div class="">
             <div class="wishlist-item">
              <div class="wishlist-item-label" style="padding: 5px">${label}</div>
              <div class="wishlist-item-icon-container">
               <i
+                id="delete-${id}"
                 class="fas fa-trash-alt fa-lg flyout-icon"
                 style="color: black"
               ></i>
             </div>
           </div>
         </div>`;
+
+  return div;
 };

@@ -32,7 +32,7 @@ export const index = (req: Request, res: Response) => {
         cards += data
           .replace('{{image}}', r.pictureUrl)
           .replace('{{name}}', r.name)
-          .replace('{{released}}', r.release)
+          .replace('{{released}}', r.released)
           .replace('{{game-id}}', r.id)
           .replace('{{game-name}}', r.name);
       });
@@ -69,13 +69,13 @@ export const getContent = (): Promise<any> => {
           result.results.map(
             (r: {
               name: any;
-              release: any;
+              released: any;
               background_image: any;
               id: any;
             }) => {
               const game: Game = {
                 name: r.name,
-                release: r.release,
+                released: r.released,
                 pictureUrl: r.background_image,
                 id: r.id
               };

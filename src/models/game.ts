@@ -1,6 +1,6 @@
 export interface Game {
   id: string;
   name: string;
-  release: string;
+  released: string;
   pictureUrl: string;
 }
