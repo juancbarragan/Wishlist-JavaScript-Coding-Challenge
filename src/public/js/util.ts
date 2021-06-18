@@ -29,8 +29,10 @@ const flyoutIcon = document.querySelector('.flyout-icon');
 flyoutIcon.addEventListener('click', (e: MouseEvent) => {
   if (flyout.classList.contains('opened')) {
     flyout.classList.remove('opened');
+    flyoutIcon.classList.remove('opened');
   } else {
     flyout.classList.add('opened');
+    flyoutIcon.classList.add('opened');
   }
 });
 

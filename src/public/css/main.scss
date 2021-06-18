@@ -6,6 +6,7 @@ $base-color: #0370cb;
 $base-color-light: #339bf0;
 $card-container-background-color: #e5f1fa;
 $red: #f0504a;
+$green: #e7fd03;
 
 .container {
   display: flex;
@@ -50,7 +51,19 @@ $red: #f0504a;
   padding: 5px;
 }
 
-.fas {
+.flyout-icon {
+  cursor: pointer;
+
+  &.opened {
+    color: $green;
+  }
+
+  &:not(.opened) {
+    color: AliceBlue;
+  }
+}
+
+.card-icon {
   cursor: pointer;
 
   &.selected {
