@@ -3,6 +3,7 @@ const wishListItemContainer = document.querySelector('.items-container');
 const favourites = new Map();
 const flyout = document.querySelector('.flyout');
 const flyoutIcon = document.querySelector('.flyout-icon');
+const errorIcon = document.querySelector('.error-icon');
 const closeFlyoutIcon = document.getElementById('close-flyout-icon');
 const emptyItemsContainer = document.querySelector('.empty-items-container');
 
@@ -31,6 +32,14 @@ flyoutIcon.addEventListener('click', () => {
   } else {
     flyout.classList.add('opened');
     flyoutIcon.classList.add('opened');
+  }
+});
+
+errorIcon.addEventListener('click', () => {
+  if (errorIcon.classList.contains('active')) {
+    errorIcon.classList.remove('active');
+  } else {
+    errorIcon.classList.add('active');
   }
 });
 

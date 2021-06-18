@@ -75,6 +75,18 @@ $green: #e7fd03;
   }
 }
 
+.error-icon {
+  cursor: pointer;
+
+  &.active {
+    color: $red;
+  }
+
+  &:not(.active) {
+    color: AliceBlue;
+  }
+}
+
 .flyout {
   display: flex;
   flex-direction: row;

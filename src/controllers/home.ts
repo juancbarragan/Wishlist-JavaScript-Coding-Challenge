@@ -9,12 +9,12 @@ import { Game } from '../models/game';
  * @route GET /
  */
 export const index = (req: Request, res: Response) => {
-  getContent().then(json => {
+  console.log(req.params);
+  getContent('https://rawg.io/api/collections/must-play/games').then(json => {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     res.header('Expires', '-1');
     res.header('Pragma', 'no-cache');
 
-    console.log(json);
     let result = fs.readFileSync(
       path.resolve(__dirname, '../public/inc.html'),
       'utf8'
@@ -48,9 +48,7 @@ export const index = (req: Request, res: Response) => {
   });
 };
 
-export const getContent = (): Promise<any> => {
-  const url = 'https://rawg.io/api/collections/must-play/games';
-
+export const getContent = (url: string): Promise<any> => {
   return new Promise((resolve, reject) => {
     const request = https.get(url, response => {
       if (response.statusCode < 200 || response.statusCode > 299) {
