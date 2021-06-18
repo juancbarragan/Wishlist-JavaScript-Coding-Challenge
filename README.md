@@ -17,11 +17,10 @@ $ npm run build
 <code>
 $ npm start
 </code>
+<br/>
+<br/>
 
-<br>
-<br>
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
+Open [http://localhost:3000](http://localhost:3000)
 ### Comments
 
 - The architecture of the application is based on the Microsoft Typescript Node
