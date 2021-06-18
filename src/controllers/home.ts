@@ -1,7 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import https from 'https';
 import fs from 'fs';
 import path from 'path';
+import { Game } from '../models/game';
 
 /**
  * Home page.
@@ -22,17 +23,18 @@ export const index = (req: Request, res: Response) => {
     let cards = '';
 
     try {
-      json.forEach((r: any) => {
+      json.forEach((r: Game) => {
         const data = fs.readFileSync(
           path.resolve(__dirname, '../public/card.html'),
           'utf8'
         );
 
         cards += data
-          .replace('{{image}}', r.background_image)
+          .replace('{{image}}', r.pictureUrl)
           .replace('{{name}}', r.name)
-          .replace('{{released}}', r.released)
-          .replace('{{game-id}}', r.id);
+          .replace('{{released}}', r.release)
+          .replace('{{game-id}}', r.id)
+          .replace('{{game-name}}', r.name);
       });
     } catch (err) {
       console.error(err);
@@ -49,28 +51,41 @@ export const index = (req: Request, res: Response) => {
 export const getContent = (): Promise<any> => {
   const url = 'https://rawg.io/api/collections/must-play/games';
 
-  // return new pending promise
   return new Promise((resolve, reject) => {
     const request = https.get(url, response => {
-      // handle http errors
       if (response.statusCode < 200 || response.statusCode > 299) {
         reject(
           new Error('Failed to load page, status code: ' + response.statusCode)
         );
       }
-      // temporary data holder
-      const body: any[] = [];
-      // on every content chunk, push it to the data array
-      response.on('data', chunk => body.push(chunk));
-      // we are done, resolve promise with those joined chunks
 
+      const body: any[] = [];
+
+      response.on('data', chunk => body.push(chunk));
       response.on('end', () => {
         const result = JSON.parse(body.join(''));
 
-        resolve(result.results);
+        resolve(
+          result.results.map(
+            (r: {
+              name: any;
+              release: any;
+              background_image: any;
+              id: any;
+            }) => {
+              const game: Game = {
+                name: r.name,
+                release: r.release,
+                pictureUrl: r.background_image,
+                id: r.id
+              };
+              return game;
+            }
+          )
+        );
       });
     });
-    // handle connection errors of the request
+
     request.on('error', err => reject(err));
   });
 };

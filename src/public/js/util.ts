@@ -1,19 +1,17 @@
 const icons = document.querySelectorAll('.card-icon');
 const wishListItemContainer = document.querySelector('.items-container');
-const favourites = new Set();
+const favourites = new Map();
 
 for (let i = 0; i < icons.length; i++) {
   icons[i].addEventListener('click', (e: MouseEvent) => {
     const element = <HTMLElement>e.target;
     const id = element.id;
 
-    console.log(id);
-
     if (element.classList.contains('selected')) {
       element.classList.remove('selected');
       favourites.delete(id);
     } else {
-      favourites.add(id);
+      favourites.set(id, { name: element.dataset.gamename });
       element.classList.add('selected');
     }
 
@@ -21,10 +19,9 @@ for (let i = 0; i < icons.length; i++) {
 
     let listOfItems = '';
 
-    console.log(favourites);
-
-    favourites.forEach(item => {
-      listOfItems += getItemHtml('hola');
+    favourites.forEach(f => {
+      console.log(f);
+      listOfItems += getItemHtml(f.name);
     });
 
     container.innerHTML = listOfItems;
@@ -44,7 +41,7 @@ flyoutIcon.addEventListener('click', (e: MouseEvent) => {
 const getItemHtml = (label: string) => {
   return `<div class="wishlist-item-container">
             <div class="wishlist-item">
-             <div class="wishlist-item-label" style="padding: 5px">gola</div>
+             <div class="wishlist-item-label" style="padding: 5px">${label}</div>
              <div class="wishlist-item-icon-container">
               <i
                 class="fas fa-trash-alt fa-lg flyout-icon"
