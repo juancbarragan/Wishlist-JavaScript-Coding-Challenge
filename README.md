@@ -4,15 +4,18 @@
 
 <code>
 $ git clone https://github.com/juancbarragan/Wishlist-JavaScript-Coding-Challenge.git
-
+</code><br/>
+<code>
 $ cd Wishlist-JavaScript-Coding-Challenge
-
+</code><br/>
+<code>
 $ npm install
-
+</code><br/>
+<code>
 $ npm run build
-
+</code><br/>
+<code>
 $ npm start
-
 </code>
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
